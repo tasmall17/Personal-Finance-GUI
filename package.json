@@ -1,0 +1,21 @@
+{
+  "name": "flightdeck",
+  "version": "1.0.0",
+  "description": "A budgeting app that reads your own bank data and keeps it on your machine.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "setup": "./setup.sh",
+    "start": "./run.sh",
+    "demo": "./run.sh --demo",
+    "sync": "./.venv/bin/python db/plaid_sync.py --env production",
+    "link": "./.venv/bin/python db/plaid_link.py --env production",
+    "receipt": "./.venv/bin/python db/receipt_ingest.py",
+    "audit": "./.venv/bin/python db/audit.py",
+    "rebuild-demo": "./.venv/bin/python demo/generate_demo.py",
+    "docker:up": "docker compose up -d && echo 'MySQL is running on 127.0.0.1:3306'",
+    "docker:down": "docker compose down"
+  },
+  "engines": { "node": ">=18" },
+  "keywords": ["budget", "personal-finance", "plaid", "mysql", "receipts"]
+}

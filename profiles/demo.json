@@ -1,0 +1,224 @@
+{
+  "version": 1,
+  "name": "Sample \u2014 Jordan Reyes, Huntington Beach",
+  "created": "2026-09-09",
+  "currency": "USD",
+  "source": "sample",
+  "person": {
+    "label": "Jordan Reyes",
+    "location": "Huntington Beach, California",
+    "employer": "Acme Corp",
+    "note": "Fictional. Invented person, real local costs."
+  },
+  "income": [
+    {
+      "label": "Acme Corp salary",
+      "detail": "Senior Operations Analyst, paid every two weeks",
+      "gross_annual": 120000,
+      "net_monthly": 6634.0,
+      "notes": "After federal, California state, FICA, the 1.2% SDI, and 6% into the 401(k)."
+    }
+  ],
+  "expenses": [
+    {
+      "name": "Rent, 1 bedroom off Beach Blvd",
+      "category": "housing",
+      "monthly": 2495.0,
+      "notes": "Mid-market for a Huntington Beach one bedroom in 2026.",
+      "day": 1
+    },
+    {
+      "name": "Renters insurance",
+      "category": "housing",
+      "monthly": 18.0,
+      "notes": "",
+      "day": 28
+    },
+    {
+      "name": "Electric (SCE)",
+      "category": "utilities",
+      "monthly": 112.0,
+      "notes": "Southern California Edison. Higher Jul-Sep, it is a beach apartment with no AC upstairs.",
+      "day": 17
+    },
+    {
+      "name": "Gas (SoCalGas)",
+      "category": "utilities",
+      "monthly": 38.0,
+      "notes": "",
+      "day": 20
+    },
+    {
+      "name": "Water, sewer, trash",
+      "category": "utilities",
+      "monthly": 62.0,
+      "notes": "City of Huntington Beach, billed every two months.",
+      "day": 9
+    },
+    {
+      "name": "Internet (Spectrum)",
+      "category": "utilities",
+      "monthly": 70.0,
+      "notes": "",
+      "day": 22
+    },
+    {
+      "name": "Mobile (Verizon)",
+      "category": "utilities",
+      "monthly": 85.0,
+      "notes": "",
+      "day": 18
+    },
+    {
+      "name": "Car payment",
+      "category": "transport",
+      "monthly": 421.0,
+      "notes": "2023 Civic, 38 payments left.",
+      "day": 15
+    },
+    {
+      "name": "Car insurance",
+      "category": "transport",
+      "monthly": 186.0,
+      "notes": "California rates. Paid every six months, shown monthly.",
+      "day": 24
+    },
+    {
+      "name": "Fuel",
+      "category": "transport",
+      "monthly": 145.0,
+      "notes": "About 10,000 miles a year at California pump prices."
+    },
+    {
+      "name": "Groceries",
+      "category": "food",
+      "monthly": 480.0,
+      "notes": ""
+    },
+    {
+      "name": "Eating out",
+      "category": "food",
+      "monthly": 320.0,
+      "notes": "The number Jordan most wants to see honestly."
+    },
+    {
+      "name": "Gym (LA Fitness)",
+      "category": "health",
+      "monthly": 39.0,
+      "notes": "",
+      "day": 2
+    },
+    {
+      "name": "Streaming",
+      "category": "lifestyle",
+      "monthly": 40.0,
+      "notes": "Netflix, Spotify, Disney+.",
+      "day": 4
+    },
+    {
+      "name": "Student loan",
+      "category": "debt",
+      "monthly": 310.0,
+      "notes": "",
+      "day": 12
+    },
+    {
+      "name": "Savings transfer",
+      "category": "savings",
+      "monthly": 900.0,
+      "notes": "Automatic on payday. Emergency fund first, then the Japan trip.",
+      "day": 5
+    }
+  ],
+  "accounts": [
+    {
+      "acct_id": "1 everyday-checking",
+      "code": "4417",
+      "label": "Chase Total Checking",
+      "kind": "checking",
+      "balance": 2840.0
+    },
+    {
+      "acct_id": "2 bills-checking",
+      "code": "2298",
+      "label": "Chase Bills Account",
+      "kind": "checking",
+      "balance": 1310.0
+    },
+    {
+      "acct_id": "3 emergency-savings",
+      "code": "7731",
+      "label": "Ally Online Savings",
+      "kind": "savings",
+      "balance": 11400.0
+    },
+    {
+      "acct_id": "4 travel-savings",
+      "code": "6650",
+      "label": "Ally Travel Fund",
+      "kind": "savings",
+      "balance": 2150.0
+    },
+    {
+      "acct_id": "5 rewards-card",
+      "code": "9042",
+      "label": "Chase Freedom Unlimited",
+      "kind": "credit",
+      "balance": -1840.0
+    }
+  ],
+  "goals": [
+    {
+      "name": "Emergency fund",
+      "target": 20000,
+      "saved": 11400,
+      "by": "2027-06-30",
+      "notes": "Three months of everything. The one that has to come first."
+    },
+    {
+      "name": "Japan, two weeks",
+      "target": 6000,
+      "saved": 2150,
+      "by": "2027-04-01",
+      "notes": "Flights in April, cherry blossom season."
+    },
+    {
+      "name": "House deposit",
+      "target": 90000,
+      "saved": 8300,
+      "by": "2031-01-01",
+      "notes": "Orange County. A long way off and Jordan knows it."
+    }
+  ],
+  "debts": [
+    {
+      "name": "Civic auto loan",
+      "balance": 15980,
+      "apr": 6.4,
+      "minimum": 421,
+      "notes": "38 payments left."
+    },
+    {
+      "name": "Student loan",
+      "balance": 21400,
+      "apr": 5.5,
+      "minimum": 310,
+      "notes": ""
+    },
+    {
+      "name": "Chase Freedom",
+      "balance": 1840,
+      "apr": 24.99,
+      "minimum": 55,
+      "notes": "Carried since the move. The expensive one."
+    }
+  ],
+  "settings": {
+    "warehouse": true,
+    "roles": {
+      "primary": "4417",
+      "bills": "2298",
+      "mortgage": "2298"
+    }
+  }
+}

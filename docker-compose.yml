@@ -1,0 +1,53 @@
+# MySQL in a container, for people who would rather not install it.
+#
+#   docker compose up -d --wait     (--wait: don't return until MySQL is ready)
+#   ./setup.sh                      (it finds this container by name and uses it)
+#
+# The database lives in a named volume, so `docker compose down` keeps your
+# data and `docker compose down -v` is the only thing that deletes it.
+#
+# Two caveats worth knowing before you choose this route:
+#   - If you also have a Homebrew MySQL running, both want port 3306. setup.sh
+#     will stop and ask which one you meant rather than guess.
+#   - The Receipts tab connects on ::1, which this container does not answer on.
+#     Everything else works. Receipts need a Homebrew MySQL.
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: flightdeck-mysql
+    restart: unless-stopped
+    # 127.0.0.1 on purpose: the database is not reachable from your network.
+    ports: ["127.0.0.1:3306:3306"]
+    environment:
+      MYSQL_ROOT_PASSWORD: flightdeck-local-only
+      MYSQL_DATABASE: flightdeck
+      MYSQL_USER: flightdeck
+      MYSQL_PASSWORD: flightdeck-local-only
+    command: >
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_0900_ai_ci
+    volumes:
+      - flightdeck-data:/var/lib/mysql
+      # Every .sql here runs once, the first time the volume is created, in
+      # filename order. The order matters: 02 builds views over the table 01
+      # creates, and 04 builds views over the tables 03 creates.
+      - ./db/claudia_usaa_import.sql:/docker-entrypoint-initdb.d/01-tables.sql:ro
+      - ./db/personal_finance_gui_views.sql:/docker-entrypoint-initdb.d/02-views.sql:ro
+      - ./db/receipts_schema.sql:/docker-entrypoint-initdb.d/03-receipts.sql:ro
+      - ./db/receipts_views.sql:/docker-entrypoint-initdb.d/04-receipt-views.sql:ro
+    healthcheck:
+      # Over TCP on purpose. While the init scripts are running, MySQL listens
+      # on the socket only, so a TCP check cannot report ready too early.
+      # A real query rather than `mysqladmin ping`, which exits 0 even when the
+      # server answers "access denied".
+      test: ["CMD", "mysql", "-h", "127.0.0.1", "-uroot", "-pflightdeck-local-only",
+             "-e", "SELECT 1 FROM claudia_usaa_import LIMIT 1", "flightdeck"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      # Loading the schema on a cold volume takes longer than one interval;
+      # failures during this window do not count against `retries`.
+      start_period: 60s
+
+volumes:
+  flightdeck-data:
